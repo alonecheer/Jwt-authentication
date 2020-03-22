@@ -10,6 +10,10 @@ const Index = () =>{
     const result = await  axios.post('http://localhost:3001/auth/login',
       {username:username,password:password})
       console.log(result.data.access_token)
+
+      localStorage.setItem(
+        'login', JSON.stringify({token: result.data.access_token})
+        )
   }
   return(
     <div>
