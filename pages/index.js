@@ -5,7 +5,7 @@ const Index = () =>{
   const [username,setUsername] = useState('');
   const [password,setPassword] = useState('');
   let [tokens,setTokens] = useState('');
-  const [status,setStatus] = useState('false');
+  let [status,setStatus] = useState('false');
   
   const login = async ()   => {
     const result = await  axios.post('http://localhost:3001/auth/login',
