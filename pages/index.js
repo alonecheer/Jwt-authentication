@@ -4,17 +4,26 @@ import axios from "axios";
 const Index = () =>{
   const [username,setUsername] = useState('');
   const [password,setPassword] = useState('');
-  const [token,setToken] = useState('');
-
+  let [tokens,setTokens] = useState('');
+  const [status,setStatus] = useState('false');
+  
   const login = async ()   => {
     const result = await  axios.post('http://localhost:3001/auth/login',
       {username:username,password:password})
-      console.log(result.data.access_token)
+      //console.log(result.data.access_token)
 
       localStorage.setItem(
         'login', JSON.stringify({token: result.data.access_token})
         )
+        tokens = JSON.parse(localStorage.getItem('login'));
+        console.log(tokens)
+        if(tokens!=null)
+        {
+          status = 'true';
+        }
+        console.log('status',status)
   }
+
   return(
     <div>
       <h1>Jwt Token with</h1>
